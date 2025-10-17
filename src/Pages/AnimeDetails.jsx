@@ -1,4 +1,4 @@
-import "../styles/animeDetails.css";
+import "../styles/AnimeDetails.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { faStar } from "@fortawesome/free-solid-svg-icons";

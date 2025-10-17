@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import "../styles/categories.css";
+import "../styles/Categories.css";
 import heroArt from "../assets/hero-art.webp";
 
 const Categories = () => {
