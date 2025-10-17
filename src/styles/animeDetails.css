@@ -1,0 +1,189 @@
+.anime-details {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.anime-details__title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.anime-details__image {
+    width: 100%;
+    max-width: 20rem;
+    height: auto;
+    max-height: min-content;
+    /* <-- prevents stretching */
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+}
+
+.anime-details__image-wrapper {
+    display: flex;
+    width: 50%;
+}
+
+.anime-details__info {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #444;
+    text-align: center;
+}
+
+.select__anime--info-wrapper {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* --- Synopsis toggle --- */
+.anime-details__info {
+  position: relative;
+  max-width: 700px;
+  font-weight: 400;
+  text-align: justify;
+  color: #333;
+  transition: all 0.25s ease;
+}
+
+.anime-details__toggle {
+  background: none;
+  border: none;
+  color: #444;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.anime-details__toggle:hover {
+  color:#6c63ff;
+}
+.anime-details__toggle:active {
+  color: #df45e5;
+  cursor: default;
+}
+
+/* --- Recommended anime grid --- */
+.anime-details__recs {
+  margin-top: 2.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.anime-details__recs-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.anime-details__recs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+  padding: 0 1rem;
+}
+
+.rec-card {
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 180px;
+}
+
+.rec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.rec-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rec-card__title {
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  color: #333;
+}
+
+/* Skeleton placeholders on the details page */
+.skeleton .anime-details__image {
+  aspect-ratio: 2 / 3;   /* keeps poster shape */
+  width: 100%;
+  border-radius: 12px;
+}
+
+.skeleton .rec-card__img {
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Reuse your shimmer */
+@keyframes skeleton-shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+.skeleton .anime-details__image,
+.skeleton .rec-card__img,
+.skeleton .line {
+  background: linear-gradient(90deg, #eceef7 25%, #f6f7fb 50%, #eceef7 75%);
+  background-size: 400px 100%;
+  animation: skeleton-shimmer 1.2s infinite linear;
+}
+
+/* Smooth skeleton fade-in for recommendations */
+.anime-details__recs-grid {
+  opacity: 0;
+  animation: fadeInGrid 0.3s ease-out forwards 0.2s;
+}
+
+@keyframes fadeInGrid {
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .anime-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .anime-details__image-wrapper,
+  .select__anime--info-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .anime-details__image {
+    width: 100%;
+    max-width: 20rem;
+    height: auto;
+  }
+}

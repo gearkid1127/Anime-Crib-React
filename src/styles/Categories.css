@@ -1,0 +1,193 @@
+/* --- Categories Page Styles --- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.anime-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 3px solid #111;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  box-shadow: 4px 4px 0 #111;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background-color: #fffefc;
+}
+
+.anime-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #111;
+}
+
+.anime-card__img {
+  width: 100%;
+  height: 100%;
+}
+
+.anime-card__title {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.5rem;
+  margin: 0;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* Image layer that fades in when a preview loads */
+.category-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;                /* start hidden */
+  transition: opacity 0.35s ease;
+  z-index: 1;                /* sits under the title (which is z-index: 2) */
+}
+
+/* --- Category image behavior --- */
+.category-placeholder {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #f6f7fb 0 10px,
+    #eef0f7 10px 20px
+  );
+  z-index: 0;
+}
+
+.category-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.category-img--visible {
+  opacity: 1;
+}
+
+.category-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* makes image fill card without distortion */
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.category-img--visible {
+  opacity: 1;
+}
+
+.category-img {
+  filter: blur(6px);
+  transform: scale(1.05);
+}
+
+.category-img--visible {
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 0.35s ease, filter 0.4s ease, transform 0.4s ease;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+  z-index: 0;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+
+/* ===== Responsive card grid (Flexbox) ===== */
+:root {
+  --gutter: 1rem;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+  align-items: stretch;
+}
+
+/* Each card grows/shrinks between ~10–14rem; wraps automatically */
+.anime-card {
+  flex: 1 1 clamp(10rem, 22vw, 14rem);
+  max-width: 18rem;            /* nice upper bound on huge screens */
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface, #fff);
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+/* Keep posters in a clean 2:3 ratio with no stretching */
+.anime-card__img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Let text fill the remaining height */
+.anime-card__body {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Tighten layout on very small phones */
+@media (max-width: 420px) {
+  .anime-card {
+    flex-basis: 48%;
+  }
+}
